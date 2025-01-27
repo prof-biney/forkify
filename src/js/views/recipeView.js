@@ -1,9 +1,11 @@
 import icons from 'url:../../img/icons.svg';
 import { Fraction } from 'fractional';
+import { mark } from 'regenerator-runtime';
 
 class RecipeView {
   #parentElement = document.querySelector('.recipe');
   #data;
+  #errorMessage = 'We could not find that recipe. Try another one!';
 
   render(data) {
     this.#data = data;
@@ -23,6 +25,21 @@ class RecipeView {
     </div>
     `;
 
+    this.#clear();
+    this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  renderError(message = this.#errorMessage) {
+    const markup = `
+      <div class="error">
+        <div>
+          <svg>
+            <use href="${icons}#icon-alert-triangle"></use>
+          </svg>
+        </div>
+        <p>${message}</p>
+      </div>
+    `;
     this.#clear();
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
