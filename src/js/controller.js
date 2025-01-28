@@ -6,6 +6,10 @@ import resultsView from './views/resultsView.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 const recipeContainer = document.querySelector('.recipe');
 
 // NEW API URL (instead of the one shown in the video)
