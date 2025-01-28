@@ -6,9 +6,9 @@ import resultsView from './views/resultsView.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-if (module.hot) {
-  module.hot.accept();
-}
+// if (module.hot) {
+//   module.hot.accept();
+// }
 
 const recipeContainer = document.querySelector('.recipe');
 
@@ -28,7 +28,8 @@ const controlRecipes = async function () {
     await model.loadRecipe(id);
 
     // 2) Rendering recipe
-    recipeView.render(model.state.recipe);
+    // recipeView.render(model.state.recipe);
+    recipeView.render(model.getSearchResultsPage(1));
   } catch (err) {
     recipeView.renderError();
   }
@@ -47,9 +48,10 @@ const controlSearchResults = async function () {
 
     // 3) Render results
     //console.log(model.state.search.results);
-    resultsView.render(model.state.search.results);
+    // resultsView.render(model.state.search.results);
+    resultsView.render(model.getSearchResultsPage(2));
   } catch (err) {
-    console.error(err);
+    resultsView.renderError(err);
   }
 };
 
