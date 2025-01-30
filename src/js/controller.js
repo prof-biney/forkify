@@ -116,6 +116,9 @@ const controlAddRecipe = async function (newRecipe) {
     // Render Success message
     addRecipeView.renderMessage();
 
+    // Rednder bookmark view
+    bookmarksView.render(model.state.bookmarks);
+
     // Close form
     setTimeout(function () {
       addRecipeView.toggleWindow();
