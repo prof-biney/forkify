@@ -119,6 +119,9 @@ const controlAddRecipe = async function (newRecipe) {
     // Rednder bookmark view
     bookmarksView.render(model.state.bookmarks);
 
+    // Change ID in the URL
+    window.history.pushState(null, '', `#${model.state.recipe.id}`);
+
     // Close form
     setTimeout(function () {
       addRecipeView.toggleWindow();
