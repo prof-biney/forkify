@@ -11,7 +11,7 @@ const timeout = function (s) {
 export const AJAX = async function (url, uploadData = undefined) {
   try {
     const fetchPro = uploadData
-      ? etch(url, {
+      ? fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
